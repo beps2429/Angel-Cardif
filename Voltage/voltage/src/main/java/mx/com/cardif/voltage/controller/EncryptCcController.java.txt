@@ -1,0 +1,27 @@
+package mx.com.cardif.voltage.controller;
+
+import mx.com.cardif.voltage.mapper.encryptcc.EncryptCc;
+import mx.com.cardif.voltage.mapper.encryptcc.EncryptCcResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("v1/cardif/voltage/encrypt-cc")
+public class EncryptCcController {
+
+    // Metodo para crear una nueva en ecriptacion-cc
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public EncryptCcResponse crearEncryptCc(EncryptCc request) {
+
+        // Se crea el objeto a retornar
+        EncryptCcResponse response = EncryptCcResponse.builder().pan("1111222233334444").cvv("1234").build();
+        // Se retorna el objeto esperado
+        return response;
+
+    }
+
+}
