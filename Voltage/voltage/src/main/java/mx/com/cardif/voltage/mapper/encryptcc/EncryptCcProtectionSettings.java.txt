@@ -1,0 +1,22 @@
+package mx.com.cardif.voltage.mapper.encryptcc;
+
+import lombok.Builder;
+import lombok.Data;
+
+/**
+ * @author angel.godinez
+ *
+ * Modelado del objeto EncryptCcProtectionSettings
+ */
+@Data
+@Builder
+public class EncryptCcProtectionSettings {
+
+    // Atributo indentity
+    // indentity
+    private String indentity;
+
+    // Atributo formatName
+    // formatName
+    private String formatName;
+}
