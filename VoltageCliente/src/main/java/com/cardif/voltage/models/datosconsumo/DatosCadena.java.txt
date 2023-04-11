@@ -1,0 +1,18 @@
+package com.cardif.voltage.models.datosconsumo;
+
+import lombok.Builder;
+import lombok.Data;
+
+/**
+ * @author angel.godinez
+ *
+ * Modelo para los datos que se envian por cadena
+ */
+@Data
+@Builder
+public class DatosCadena {
+
+    // dato cadena a cifrar
+    // cadena
+    private String cadena;
+}
