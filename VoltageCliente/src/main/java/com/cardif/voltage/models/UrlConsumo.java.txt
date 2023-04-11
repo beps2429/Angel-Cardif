@@ -1,0 +1,67 @@
+package com.cardif.voltage.models;
+
+/**
+ * @author angel.godinez
+ *
+ * Modelo para el consumo de un servicio web service
+ */
+public class UrlConsumo {
+
+    private String hostId;
+
+    private String operationId;
+
+    private String clientIpAddress;
+
+    private String cultureCode;
+
+    private String accountNumber;
+
+    public UrlConsumo(String hostId, String operationId, String clientIpAddress, String cultureCode, String accountNumber) {
+        this.hostId = hostId;
+        this.operationId = operationId;
+        this.clientIpAddress = clientIpAddress;
+        this.cultureCode = cultureCode;
+        this.accountNumber = accountNumber;
+    }
+
+    public String getHostId() {
+        return hostId;
+    }
+
+    public void setHostId(String hostId) {
+        this.hostId = hostId;
+    }
+
+    public String getOperationId() {
+        return operationId;
+    }
+
+    public void setOperationId(String operationId) {
+        this.operationId = operationId;
+    }
+
+    public String getClientIpAddress() {
+        return clientIpAddress;
+    }
+
+    public void setClientIpAddress(String clientIpAddress) {
+        this.clientIpAddress = clientIpAddress;
+    }
+
+    public String getCultureCode() {
+        return cultureCode;
+    }
+
+    public void setCultureCode(String cultureCode) {
+        this.cultureCode = cultureCode;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+}
