@@ -1,0 +1,24 @@
+package com.cardif.voltage.models.decryptcc;
+
+import lombok.Builder;
+import lombok.Data;
+
+/**
+ * @author angel.godinez
+ *
+ * Modelado del objeto DecryptCc
+ */
+@Data
+@Builder
+public class DecryptCc {
+
+    // Atributo data
+    private String pan;
+
+    // Atributo cvv
+    private String cvv;
+
+    // Atributo protectionSettings
+    private DecryptCcProtectionSettings protectionSettings;
+
+}
