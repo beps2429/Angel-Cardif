@@ -1,0 +1,7 @@
+package com.cardif.voltage.mashery;
+
+public interface MasheryInterface {
+
+    public String authentication();
+    
+}
