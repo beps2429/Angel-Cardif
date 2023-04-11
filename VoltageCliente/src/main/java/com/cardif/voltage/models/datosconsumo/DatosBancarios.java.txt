@@ -1,0 +1,22 @@
+package com.cardif.voltage.models.datosconsumo;
+
+import lombok.Builder;
+import lombok.Data;
+
+/**
+ * @author angel.godinez
+ *
+ * Modelado del objeto para datos bancarios
+ */
+@Data
+@Builder
+public class DatosBancarios {
+
+    // Numero de cuenta principal
+    // pan
+    private String pan;
+
+    // Valor de verificacion de la tarjeta
+    // cvv
+    private String cvv;
+}
