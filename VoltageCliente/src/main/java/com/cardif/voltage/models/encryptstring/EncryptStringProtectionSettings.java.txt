@@ -1,0 +1,20 @@
+package com.cardif.voltage.models.encryptstring;
+
+import lombok.Builder;
+import lombok.Data;
+
+/**
+ * @author angel.godinez
+ *
+ * Modelado del objeto EncryptStringProtectionSettings
+ */
+@Data
+@Builder
+public class EncryptStringProtectionSettings {
+
+    // Atributo indentity
+    private String indentity;
+
+    // Atributo formatName
+    private String formatName;
+}
