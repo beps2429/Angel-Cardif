@@ -1,0 +1,23 @@
+package mx.com.cardif.voltage.controller;
+
+import mx.com.cardif.voltage.mapper.decrypt.Decrypt;
+import mx.com.cardif.voltage.mapper.decrypt.DecryptResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("v1/cardif/voltage/decrypt-string")
+public class DecryptController {
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public DecryptResponse crearDecrypt(@RequestBody Decrypt decrypt) {
+
+        // Se crea el objeto DecryptResponse
+        DecryptResponse response = DecryptResponse.builder().data("string").build();
+        // Se retorna el objeto
+        return response;
+
+    }
+
+}
