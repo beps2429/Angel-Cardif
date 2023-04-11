@@ -1,0 +1,26 @@
+package com.cardif.voltage.conexion;
+
+import lombok.Builder;
+import lombok.Data;
+
+/**
+ * @author angel.godinez
+ *
+ * Modelado del objeto para la conexion
+ */
+@Data
+@Builder
+public class Conexion {
+
+    // Nombre del usuario
+    // usuario
+    private String usuario;
+
+    // Password del usuario
+    // password
+    private String password;
+
+    // Atributo de datos de conexion del Api
+    // api
+    private MasheriApi api;
+}
