@@ -1,0 +1,43 @@
+package com.cardif.voltage.conexion;
+
+import lombok.Builder;
+import lombok.Data;
+
+/**
+ * @author angel.godinez
+ *
+ * Modelado del objeto masheriApi
+ */
+@Data
+@Builder
+public class MasheriApi {
+
+    // Atributo del indentificador
+    // id
+    private Integer id;
+
+    // Secret de MasheriApi
+    // secret
+    private String secret;
+
+    // Key de MasheriApi
+    // key
+    private String key;
+
+    // Pass de MasheriApi
+    // pass
+    private String pass;
+
+    // ServerKey de MasheriApi
+    // serverKey
+    private String serverKey;
+
+    // User de MasheryApi
+    // user
+    private String user;
+
+    // url de MasheryApi
+    // url
+    private String url;
+
+}
