@@ -1,0 +1,31 @@
+package com.cardif.voltage.models.reencryptstring;
+
+import lombok.Builder;
+import lombok.Data;
+
+/**
+ * @author angel.godinez
+ *
+ * Modelo para el objeto ReencryptStringPie
+ */
+@Data
+@Builder
+public class ReencryptStringPie {
+
+    // Atributo mode
+    // mode
+    private String mode;
+
+    // Atributo merchantId
+    // merchantId
+    private String merchantId;
+
+    // Atributo keyId
+    // keyId
+    private String keyId;
+
+    // Atributo phaseBit
+    // phaseBit
+    private Integer phaseBit;
+
+}
