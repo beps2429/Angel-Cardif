@@ -1,0 +1,173 @@
+package com.cardif.voltage;
+
+import com.cardif.voltage.conexion.Conexion;
+import com.cardif.voltage.constantes.Constantes;
+import com.cardif.voltage.models.datosconsumo.DatosBancarios;
+import com.cardif.voltage.models.datosconsumo.DatosCadena;
+import com.cardif.voltage.models.decryptcc.DecryptCc;
+import com.cardif.voltage.models.decryptcc.DecryptCcProtectionSettings;
+import com.cardif.voltage.models.decryptstring.DecryptString;
+import com.cardif.voltage.models.decryptstring.DecryptStringProtectionSettings;
+import com.cardif.voltage.models.encryptcc.EncryptCc;
+import com.cardif.voltage.models.encryptcc.EncryptCcProtectionSettings;
+import com.cardif.voltage.models.encryptstring.EncryptString;
+import com.cardif.voltage.models.encryptstring.EncryptStringProtectionSettings;
+import com.cardif.voltage.models.reencryptcc.ReencryptCc;
+import com.cardif.voltage.models.reencryptcc.ReencryptCcPie;
+import com.cardif.voltage.models.reencryptcc.ReencryptCcProtectionSettings;
+import com.cardif.voltage.models.reencryptstring.ReencryptString;
+import com.cardif.voltage.models.reencryptstring.ReencryptStringPie;
+import com.cardif.voltage.models.reencryptstring.ReencryptStringProtectionSettings;
+import com.google.gson.Gson;
+
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.client.Invocation;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.Response;
+
+/**
+ * @author angel.godinez
+ *
+ * Modelo encargado de la generación de consultas a los servicios de encriptación
+ */
+public class EncriptadoCardifVoltage {
+
+    // metodo que ejecuta el servicio requerido
+    private String clientePeticion(String url, Object objeto) {
+
+        // Se declara el atributo de la respuesta generada
+        String respuesta = "";
+
+        // Generamos un try para el control de los errores generados
+        try {
+
+            // Creamos el cliente de conexion con el Api Rest Full
+            Client client = ClientBuilder.newClient();
+            // Creamos el target lo cual es nuestra URL
+            WebTarget target = client.target(url);
+            // Creamos la solicitud que realizara el request
+            Invocation.Builder solicitud = target.request();
+
+            /**
+             * Convertimos el objeto en gson
+             */
+            // Creamos el objeto gson
+            Gson gson = new Gson();
+            // Creamos un String en formato json
+            String jsonObj = gson.toJson(objeto);
+            // Imprimos en pantalla el json generado
+            System.out.println(jsonObj);
+
+            /**
+             * Enviamos nuestro json via post al Api RestFul
+             */
+            Response post = solicitud.post(Entity.json(jsonObj));
+            // Recibimos la respuesta y la leemos en la clase de tipo String
+            respuesta = post.readEntity(String.class);
+
+        // Se realiza el casteo de los errores mediante un catch
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+
+        return respuesta;
+    }
+
+    public String reEncryptString(Conexion conexion, DatosCadena cadena) {
+
+        // Creamos los objetos que se enviaran por cada metodo recibido
+        // ReencryptStringProtectionSettings
+        ReencryptStringProtectionSettings protectionSettings = ReencryptStringProtectionSettings.builder().indentity("string").formatName("string").build();
+        // ReencryptStringPie
+        ReencryptStringPie pie = ReencryptStringPie.builder().mode("EMBEDDED").merchantId("default").keyId("ffffff").phaseBit(0).build();
+        // ReencryptString
+        ReencryptString reencryptString = ReencryptString.builder().data(cadena.getCadena()).protectionSettings(protectionSettings).pie(pie).build();
+
+        // Se imprime los datos de conexion
+        System.out.println(conexion.toString());
+
+        // Se retorna el objeto enviado
+        return clientePeticion(Constantes.URL_RE_ENCRYPT_STRING, reencryptString);
+
+    }
+
+    public String reEncryptCc(Conexion conexion, DatosBancarios datosBancarios) {
+
+        // Creamos los objetos que se enviaran por cada metodo recibido
+        // ReencryptCcPie
+        ReencryptCcPie pie = ReencryptCcPie.builder().mode("EMBEDDED").merchantId("default").build();
+        // ReencryptCCProtectionSettings
+        ReencryptCcProtectionSettings protectionSettings = ReencryptCcProtectionSettings.builder().indentity("string").formatName("string").build();
+        // ReencryptCc
+        ReencryptCc reencryptCc = ReencryptCc.builder().pan(datosBancarios.getPan()).cvv(datosBancarios.getCvv()).protectionSettings(protectionSettings).pie(pie).build();
+
+        // Se imprime los datos de conexion
+        System.out.println(conexion.toString());
+
+        // Se retorna el objeto enviado
+        return clientePeticion(Constantes.URL_RE_ENCRYPT_CC, reencryptCc);
+    }
+
+    public String encryptString(Conexion conexion, DatosCadena cadena) {
+
+        // Creamos los objetos que se enviaran por cada metodo recibido
+        // EncryptStringProtectionSettings
+        EncryptStringProtectionSettings protectionSettings = EncryptStringProtectionSettings.builder().indentity("string").formatName("string").build();
+        // EncryptString
+        EncryptString encryptString = EncryptString.builder().data(cadena.getCadena()).protectionSettings(protectionSettings).build();
+
+        // Se imprime los datos de conexion
+        System.out.println(conexion.toString());
+
+        // Se retorna el objeto enviado
+        return clientePeticion(Constantes.URL_ENCRYPT_STRING, encryptString);
+    }
+
+    public String encryptCc(Conexion conexion, DatosBancarios datosBancarios) {
+
+        // Creamos los objetos que se enviaran por cada metodo recibido
+        // EncryptCcProtectionSettings
+        EncryptCcProtectionSettings protectionSettings = EncryptCcProtectionSettings.builder().indentity("string").formatName("string").build();
+        // EncryptCc
+        EncryptCc encryptCc = EncryptCc.builder().pan(datosBancarios.getPan()).cvv(datosBancarios.getCvv()).protectionSettings(protectionSettings).build();
+
+        // Se imprime los datos de conexion
+        System.out.println(conexion.toString());
+
+        // Se retorna el objeto enviado
+        return clientePeticion(Constantes.URL_ENCRYPT_CC, encryptCc);
+    }
+
+    public String decryptString(Conexion conexion, DatosCadena cadena) {
+
+        // Creamos los objetos que se enviaran por cada metodo recibido
+        // DecryptStringProtectionSettings
+        DecryptStringProtectionSettings protectionSettings = DecryptStringProtectionSettings.builder().indentity("string").formatName("string").build();
+        // DecryptString
+        DecryptString decryptString = DecryptString.builder().data(cadena.getCadena()).protectionSettings(protectionSettings).build();
+
+        // Se imprime los datos de conexion
+        System.out.println(conexion.toString());
+
+        // Se retorna el objeto enviado
+        return clientePeticion(Constantes.URL_DECRYPT_STRING, decryptString);
+    }
+
+    public String decryptCc(Conexion conexion, DatosBancarios datosBancarios) {
+
+        // Creamos los objetos que se enviaran por cada metodo recibido
+        // DecryptCcProtectionSettings
+        DecryptCcProtectionSettings protectionSettings = DecryptCcProtectionSettings.builder().indentity("string").formatName("string").build();
+        // DecryptCc
+        DecryptCc decryptCc = DecryptCc.builder().pan(datosBancarios.getPan()).cvv(datosBancarios.getCvv()).protectionSettings(protectionSettings).build();
+
+        // Se imprime los datos de conexion
+        System.out.println(conexion.toString());
+
+        // Se retorna el objeto enviado
+        return clientePeticion(Constantes.URL_DECRYPT_CC, decryptCc);
+    }
+
+}
