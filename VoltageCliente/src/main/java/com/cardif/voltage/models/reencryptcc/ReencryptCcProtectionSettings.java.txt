@@ -1,0 +1,20 @@
+package com.cardif.voltage.models.reencryptcc;
+
+import lombok.Builder;
+import lombok.Data;
+
+/**
+ * @author angel.godinez
+ *
+ * Modelado del objeto ReencryptCcProtectionSettings
+ */
+@Data
+@Builder
+public class ReencryptCcProtectionSettings {
+
+    // Atributo indentity
+    private String indentity;
+
+    // Atributo formatName
+    private String formatName;
+}
