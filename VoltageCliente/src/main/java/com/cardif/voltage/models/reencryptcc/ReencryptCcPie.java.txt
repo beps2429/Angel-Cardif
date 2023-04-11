@@ -1,0 +1,20 @@
+package com.cardif.voltage.models.reencryptcc;
+
+import lombok.Builder;
+import lombok.Data;
+
+/**
+ * @author angel.godinez
+ *
+ * Modelado del objeto ReencryptCcPie
+ */
+@Data
+@Builder
+public class ReencryptCcPie {
+
+    // Atributo del objeto model
+    private String mode;
+
+    // Atributo del objeto merchantId
+    private String merchantId;
+}
