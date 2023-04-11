@@ -1,0 +1,23 @@
+package com.cardif.voltage.models.encryptcc;
+
+import lombok.Builder;
+import lombok.Data;
+
+/**
+ * @author angel.godinez
+ *
+ * Modelado del objeto EncryptCC
+ */
+@Data
+@Builder
+public class EncryptCc {
+
+    // Atributo pan
+    private String pan;
+
+    // Atributo cvv
+    private String cvv;
+
+    // Atributo protectionSettings
+    private EncryptCcProtectionSettings protectionSettings;
+}
