@@ -1,0 +1,40 @@
+package com.cardif.voltage.constantes;
+
+/**
+ * Constantes
+ *
+ * @author angel.godinez
+ *
+ */
+public final class Constantes {
+
+    /**
+     * Microservicios a consumir respecto a la url
+     */
+    // DecryptCc
+    public static final String URL_DECRYPT_CC = "http://localhost:56687/v1/cardif/voltage/decrypt-cc";
+    // DecryptString
+    public static final String URL_DECRYPT_STRING = "http://localhost:56687/v1/cardif/voltage/decrypt-string";
+    // EncryptCc
+    public static final String URL_ENCRYPT_CC = "http://localhost:56687/v1/cardif/voltage/encrypt-cc";
+    // EncryptString
+    public static final String URL_ENCRYPT_STRING = "http://localhost:56687/v1/voltage/encrypt-string";
+    // Re-encryptCc
+    public static final String URL_RE_ENCRYPT_CC = "http://localhost:56687/v1/cardif/voltage/re-encrypt-cc";
+    // Re-encryptCc
+    public static final String URL_RE_ENCRYPT_STRING = "http://localhost:56687/v1/cardif/voltage/re-encrypt-string";
+
+    /**
+     * VERBOS DE ACUERDO AL METODO
+     */
+    // POST
+    public static final String POST = "POST";
+    // PUT
+    public static final String PUT = "PUT";
+    // DELETE
+    public static final String DELETE = "DELETE";
+    // GET
+    public static final String GET = "GET";
+
+
+}
